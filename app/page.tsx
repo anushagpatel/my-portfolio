@@ -1,6 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
+//import { useRouter } from "next/router"
+import Image from 'next/image';
 import {
   GitlabIcon as GitHub,
   Linkedin,
@@ -28,7 +30,7 @@ export default function Portfolio() {
   const [visitCount, setVisitCount] = useState(0)
   const [isClient, setIsClient] = useState(false)
   const [activeProjectFilter, setActiveProjectFilter] = useState("All") // New state for project filter
-
+  //const { basePath } = useRouter();
   useEffect(() => {
     setIsClient(true)
     const currentCount = localStorage.getItem("portfolio-visits")
@@ -176,8 +178,9 @@ export default function Portfolio() {
           {/* Right Column: Profile Picture, Contact, Social */}
           <div className="flex flex-col items-center md:items-end gap-8">
             <div className="relative w-55 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-blue-600 p-1 shadow-2xl shadow-blue-200/50">
-              <img
-                src="/my image.png"
+              <Image
+                //src={`${basePath}/my image.png `}
+                src="/my-portfolio/my image.png"
                 alt="Anusha G.Patel"
                 className="w-full h-full object-cover rounded-full shadow-lg shadow-blue-200/50"
               />
@@ -515,17 +518,17 @@ export default function Portfolio() {
           link: "https://www.credly.com/badges/62075e98-6492-4c80-9d1e-6da338ffc549/linked_in",
         },
         {
-          src: "/reavct.png",
+          src: "/my-portfolio/reavct.png",
           alt: "Edureka React Frontend Developer Certificate",
           title: "React Frontend Developer",
         },
         {
-          src: "/AI Workplace.jpeg",
+          src: "/my-portfolio/AI Workplace.jpeg",
           alt: "AI at Workplace - Northeastern University",
           title: "AI at Workplace",
         },
         {
-          src: "/Azure.jpg",
+          src: "/my-portfolio/Azure.jpg",
           alt: "Azure DevOps",
           title: "Azure DevOps",
         },

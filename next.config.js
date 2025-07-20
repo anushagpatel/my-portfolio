@@ -3,7 +3,7 @@
 const nextConfig = {
   output: 'export',
   basePath: '/my-portfolio',
-  trailingSlash: true,
+  assetPrefix: '/my-portfolio/',
 };
 
 module.exports = nextConfig;
