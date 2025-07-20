@@ -178,9 +178,9 @@ export default function Portfolio() {
           {/* Right Column: Profile Picture, Contact, Social */}
           <div className="flex flex-col items-center md:items-end gap-8">
             <div className="relative w-55 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-blue-600 p-1 shadow-2xl shadow-blue-200/50">
-              <Image
+              <img
                 //src={`${basePath}/my image.png `}
-                src="/my-portfolio/my image.png"
+                src="/my_image.png"
                 alt="Anusha G.Patel"
                 className="w-full h-full object-cover rounded-full shadow-lg shadow-blue-200/50"
               />
@@ -518,17 +518,17 @@ export default function Portfolio() {
           link: "https://www.credly.com/badges/62075e98-6492-4c80-9d1e-6da338ffc549/linked_in",
         },
         {
-          src: "/my-portfolio/reavct.png",
+          src: "/reavct.png",
           alt: "Edureka React Frontend Developer Certificate",
           title: "React Frontend Developer",
         },
         {
-          src: "/my-portfolio/AI Workplace.jpeg",
+          src: "/AI Workplace.jpeg",
           alt: "AI at Workplace - Northeastern University",
           title: "AI at Workplace",
         },
         {
-          src: "/my-portfolio/Azure.jpg",
+          src: "/Azure.jpg",
           alt: "Azure DevOps",
           title: "Azure DevOps",
         },
