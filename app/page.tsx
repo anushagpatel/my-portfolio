@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-//import { useRouter } from "next/router"
-import Image from 'next/image';
 import {
   GitlabIcon as GitHub,
   Linkedin,
@@ -30,11 +28,11 @@ export default function Portfolio() {
   const [visitCount, setVisitCount] = useState(0)
   const [isClient, setIsClient] = useState(false)
   const [activeProjectFilter, setActiveProjectFilter] = useState("All") // New state for project filter
-  //const { basePath } = useRouter();
+
   useEffect(() => {
     setIsClient(true)
     const currentCount = localStorage.getItem("portfolio-visits")
-    const newCount = currentCount ? Number.parseInt(currentCount) + 1 : 1
+    const newCount = currentCount ? Number.parseInt(currentCount) + 1 : 70
     localStorage.setItem("portfolio-visits", newCount.toString())
     setVisitCount(newCount)
   }, [])
@@ -49,36 +47,65 @@ export default function Portfolio() {
     setIsMenuOpen(false)
   }
 
-  const projectCategories = ["All", "Fullstack-Backend", "Desktop", "UI/UX", "Data Science and Machine Learning"]
+  const projectCategories = ["All", "Fullstack Development", "Machine Learning and Artificial Intelligence", "UI/UX"]
 
   const projects = [
     {
-      title: "OpenReview API Review Fetcher",
-      tech: ["Python", "OpenReview API", "PyTorch", "Pandas"],
-      description:
-        "This project fetches papers and reviews from ICLR conferences using the OpenReview API. It supports both a CLI-based script and a REST API built with FastAPI.",
-      github: "https://github.com/anusha-gpatel/ai_review_fetcher",
-      demo: "#",
-      gradient: "from-blue-500 to-purple-600",
-      category: "Data Science and Machine Learning",
+      title: "ICLR Review Bias Model",
+      tech: ["Python", "PyTorch", "Transformers", "Pandas", "NumPy", "CUDA", "Scikit-learn"],
+      description: "Fine-tuned a BERT model using PyTorch and Hugging Face to detect potential bias in ICLR research paper peer reviews",
+      github: "https://github.com/anushagpatel/BERT_Finetuning",
+      gradient: "from-pink-500 to-rose-600",
+      category: "Machine Learning and Artificial Intelligence",
     },
     {
       title: "NuMoves",
       tech: ["Java", "Spring Boot", "Web Sockets", "MySQL", "ReactJS"],
       description: "A web-based chat application built with Spring Boot, supporting user authentication, a SQL database, and real-time messaging using WebSockets. It has a User registration and login (JWT-based authentication) page, added secure password handling with BCrypt. Also, Real-time chat via WebSockets (Spring Messaging) with MySQL database integration RESTful API for authentication and messaging.",
       github: "https://github.com/anushagpatel/NuMoves",
-      demo: "#",
       gradient: "from-green-500 to-teal-600",
-      category: "Desktop",
+      category: "Fullstack Development",
+    },
+    {
+      title: "HealthQ",
+      tech: ["Figma", "Moqups", "Loveable", "User Research Methods"],
+      description: "Designed an AI-powered Health Queue Management System to streamline patient wait times and optimize hospital flow. The system intelligently prioritizes patients based on urgency while ensuring a seamless digital experience for both patients and administrators.",
+      demo: "https://app.moqups.com/dMOOp2T5Ki2gcI4cvL8HlBQmg9qu3LCm/edit/page/ae0fbea44",
+      gradient: "from-green-500 to-teal-600",
+      category: "Fullstack Development",
+    },
+    {
+      title: "OpenReview API Review Fetcher",
+      tech: ["LLM", "Python", "OpenReview API", "PyTorch", "Pandas","Transformers"],
+      description:
+        "This project fetches papers and reviews from ICLR conferences using the OpenReview API. It supports both a CLI-based script and a REST API built with FastAPI.",
+      github: "https://github.com/anusha-gpatel/ai_review_fetcher",
+      gradient: "from-blue-500 to-purple-600",
+      category: "Machine Learning and Artificial Intelligence",
     },
     {
       title: "Codeforces Rating Watcher",
       tech: ["Python", "Firebase", "Azure Functions", "HTML", "CSS", "JavaScript"],
       description: "ML model for image classification with 95% accuracy using deep learning techniques.",
-      github: "#",
-      demo: "#",
+      github: "https://github.com/anushagpatel/codeforces_rating_watcher",
       gradient: "from-pink-500 to-rose-600",
-      category: "Fullstack-Backend",
+      category: "Fullstack Development",
+    },
+    {
+      title: "Decentralized Voting System",
+      tech: ["Smart Contracts", "Block-Chain", "Cryptography", "Web Development"],
+      description: "Develped an Application to Allow users to vote on proposals securely and transparently. Use cases: student body elections, community DAO proposals.",
+      demo: "https://app.moqups.com/dMOOp2T5Ki2gcI4cvL8HlBQmg9qu3LCm/edit/page/ae0fbea44",
+      gradient: "from-green-500 to-teal-600",
+      category: "All",
+    },
+
+    {
+      title: "3D Printing of Sustainable Buildings using BIM",
+      tech: ["Autodesk Revit", "AutoCAD", "BIM", "3D Printing"],
+      description: "Engineered a BIM-driven 3D printing workflow to automate sustainable building design and structural simulation, enabling rapid digital-to-physical construction",
+      gradient: "from-amber-500 to-emerald-600",
+      category: "All"
     },
   ]
 
@@ -103,7 +130,7 @@ export default function Portfolio() {
               {/* Visit Counter */}
               <div className="hidden sm:flex items-center gap-2 text-sm text-gray-500">
                 <Eye size={16} />
-                <span>{isClient ? visitCount.toLocaleString() : "0"} visits</span>
+                <span>{isClient ? visitCount.toLocaleString() : "70"} visits</span>
               </div>
             </div>
             {/* Desktop Navigation */}
@@ -130,7 +157,7 @@ export default function Portfolio() {
             <div className="md:hidden py-4 border-t border-gray-200">
               <div className="flex items-center gap-2 text-sm text-gray-500 px-4 pb-4 sm:hidden">
                 <Eye size={16} />
-                <span>{isClient ? visitCount.toLocaleString() : "0"} visits</span>
+                <span>{isClient ? visitCount.toLocaleString() : "70"} visits</span>
               </div>
               {["About", "Experience", "Certifications", "Skills", "Projects", "Testimonials"]
                 .filter((item) => item !== "Education") // Ensure Education is filtered out
@@ -149,32 +176,23 @@ export default function Portfolio() {
       </nav>
       {/* Hero Section */}
       <section id="about" className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#fdfcf7]">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23000000' fillOpacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
+    
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative">
           {/* Left Column: Name, Biodata */}
           <div className="text-center md:text-left">
             <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-700">Anusha G Patel</h1>
             <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
-              <p className="pl-4 text-xl text-gray-600 font-mono">MS Computer Systems Engineering</p>
+              <p className="pl-4 text-xl text-gray-600 font-mono">MS in Computer Systems Engineering</p>
             </div>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed border-l-4 border-yellow-500 pl-4">
-              I’m a Full-Stack Developer and Master’s student in Computer Systems at 
-              Northeastern University, Boston, with over 4.5 years of experience building 
-              scalable systems. A course in Advanced Cloud Technologies sparked my interest in
-               cloud platforms, and I’ve since been actively exploring various services. 
-               I’m currently focused on sharpening my skills in Java, C#, and full-stack development.
+              I’m a Full-Stack Developer and Master’s student at 
+              Northeastern University with over <strong className="font-bold">4 years</strong> of experience in designing, developing, and deploying cloud-native 
+              Applications and microservices.
+              <br />
               Outside of coding, you’ll likely find me exploring Boston’s food 
-                scene or scouting new running routes and local marathons to join.
+              scene or scouting new running routes and local marathons to join.
             </p>
-          </div>
+            </div>
           {/* Right Column: Profile Picture, Contact, Social */}
           <div className="flex flex-col items-center md:items-end gap-8">
             <div className="relative w-55 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-blue-600 p-1 shadow-2xl shadow-blue-200/50">
@@ -202,15 +220,6 @@ export default function Portfolio() {
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-3">
               <a
-                href="https://github.com/anushagpatel"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
-              >
-                <GitHub size={18} className="group-hover:text-cyan-600 transition-colors" />
-                <span className="hidden sm:inline">GitHub</span>
-              </a>
-              <a
                 href="https://www.linkedin.com/in/anusha-gpatel/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -220,22 +229,15 @@ export default function Portfolio() {
                 <span className="hidden sm:inline">LinkedIn</span>
               </a>
               <a
-                href="https://discord.com/users/anusha9741"
+                href="https://github.com/anushagpatel"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all duration-300 hover:scale-105 group social-link"
+                className="flex items-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
               >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="group-hover:text-indigo-200 transition-colors"
-                >
-                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
-                </svg>
-                <span className="hidden sm:inline">Discord</span>
+                <GitHub size={18} className="group-hover:text-cyan-600 transition-colors" />
+                <span className="hidden sm:inline">GitHub</span>
               </a>
+          
               <a
                 href="https://x.com/anusha_gpatel"
                 target="_blank"
@@ -259,102 +261,159 @@ export default function Portfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-5 bg-[#fdfcf7]">
-        <div className="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-4">
-            <BriefcaseBusiness className="text-cyan-700" size={32} />
-            <h2 className="text-3xl font-bold text-gray-900">Work Experience</h2>
-          </div>
-          <div className="space-y-8">
-            {/* Volunteering */}
-            <div>
-              
-              <div className="space-y-4">
+       <section id="experience" className="py-5 bg-[#fdfcf7]">
+      <div className="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-2 mb-4">
+          <BriefcaseBusiness className="text-cyan-700" size={32} />
+          <h2 className="text-3xl font-bold text-gray-900">Work Experience</h2>
+        </div>
+        <div className="space-y-8">
+          {/* Volunteering */}
+          <div>
+            <div className="space-y-4">
+              {/* Northeastern University */}
               <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                    <h4 className="text-lg font-semibold text-gray-900">Northeastern University</h4>
-                    <span className="text-cyan-600 font-mono text-sm">June 2025 - Present</span>
+                <div className="flex gap-4">
+                  {/* Company Logo */}
+                  <div className="flex-shrink-0">
+                    <img 
+                      src="/NU_RGB_seal_R.png" 
+                      alt="Northeastern University"
+                      className="w-16 h-16 object-contain"
+                    />
                   </div>
-                  <p className="text-gray-700 mb-2">Research Assistant</p>
-                  <p className="text-gray-600">
-                    Mentoring undergrad
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      Python
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      Bias Analysis
-                    </span>
-                  </div>
-                </div>
-
-              <div className="space-y-4">
-                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                    <h4 className="text-lg font-semibold text-gray-900">IBM</h4>
-                    <span className="text-cyan-600 font-mono text-sm">October 2022 - January 2024</span>
-                  </div>
-                  <p className="text-gray-700 mb-2">Application Developer</p>
-                  <p className="text-gray-600">
-                    Mentoring undergraduate students in programming fundamentals and helping them build their first
-                    projects.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      Java
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      Spring Boot
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      AWS Lambda
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">                      
-                    
-                    </span>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                    <h4 className="text-lg font-semibold text-gray-900">Tata Consultancy Services</h4>
-                    <span className="text-cyan-600 font-mono text-sm">January 2020 - October 2022</span>
-                  </div>
-                  <p className="text-gray-700 mb-2">System Engineer</p>
-                  <p className="text-gray-600">
-                    ong young women.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      C#
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      RESTAPIs
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      .Net Core
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      ReactJS
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      Azure DevOps
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      Perl
-                    </span>
-                    <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-xs border border-gray-300">
-                      Teamsite
-                    </span>
+                  
+                  {/* Content */}
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900">Northeastern University</h4>
+                      <span className="text-cyan-600 font-mono text-sm">June 2025 - Present</span>
+                    </div>
+                    <p className="text-gray-700 mb-2">Research Assistant</p>
+                    <p className="text-gray-600">
+                      • Fine-tuned RoBERTa model to classify English vs. non-English ICLR 
+                      Publications, boosting F1-score by 85% through preprocessing, tokenization, 
+                      and hyperparameter tuning (Python, PyTorch, Hugging Face).
+                      <p> 
+                      •	Automated data preprocessing workflows such as cleaning, transforming, and visualizing with Pandas and NumPy, reducing model training cycles by 25%.
+                      </p><p>
+                      •	Documented evaluation metrics including accuracy, precision, recall, and F1-score.
+                       </p>
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
+
+              {/* IBM */}
+              <div className="space-y-4">
+                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
+                  <div className="flex gap-4">
+                    {/* Company Logo */}
+                    <div className="flex-shrink-0">
+                      <img 
+                        src="/IBM_logo_in.jpg" 
+                        alt="IBM"
+                        className="w-16 h-16 object-contain"
+                      />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                        <h4 className="text-lg font-semibold text-gray-900">IBM</h4>
+                        <span className="text-cyan-600 font-mono text-sm">October 2022 - January 2024</span>
+                      </div>
+                      <p className="text-gray-700 mb-2">Application Developer</p>
+                      <p className="text-gray-600">
+                        • Built responsive dashboards using .NET, RESTful APIs, and React on the frontend for Chubb’s legacy policy, 
+                        admin, and claims platforms. 
+                      <p>
+                         •	Implemented two-factor authentication (2FA) using Spring Security for login functionality, enhancing website security and reducing 'Forgot Password' clicks by 60%
+                        </p>
+                       <p> • Implemented CI/CD pipelines using Azure DevOps, documented task analysis and unit testing,
+                      leading to a 25% reduction in post-deployment defects and a 70% improvement in deployment efficiency. 
+                       </p>
+                       <p> •	Reduced HTTP response time by 70% (1000ms → 300ms) by integrating Redis caching in Chubb Insurance webservices
+                       </p>
+                       <p>  • Maintained project documentation, including technical specs, sprint retrospectives, and change logs in Confluence, improving knowledge sharing and reducing onboarding time by 15%.
+                       </p>
+                       <p> • Utilized Azure DevOps, Confluence for project tracking, sprint planning, and documentation, optimizing task visibility and collaboration across cross-functional teams.</p>
+                        
+                     
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* TCS */}
+                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
+                  <div className="flex gap-4">
+                    {/* Company Logo */}
+                    <div className="flex-shrink-0">
+                      <img 
+                        src="/tataa.png" 
+                        alt="Tata Consultancy Services"
+                        className="w-16 h-16 object-contain"
+                      />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                        <h4 className="text-lg font-semibold text-gray-900">Tata Consultancy Services</h4>
+                        <span className="text-cyan-600 font-mono text-sm">January 2020 - October 2022</span>
+                      </div>
+                      <p className="text-gray-700 mb-2">System Engineer</p>
+                      <p className="text-gray-600">
+                        •	Revamped applications from ASP.NET MVC to .NET 5 for KPMG Web Services, offloading 20% of incoming customer requests
+                        <p>
+                        •	Designed and integrated RESTful APIs with JWT-based authentication and role-based access control, ensuring secure user management
+                        </p> <p> 
+                        •	Optimized SQL queries (stored procedures, triggers), tuned performance, and developed stored procedures, views, functions, and triggers for high-efficiency data handling
+                        </p><p>
+                        •	Implemented Azure PaaS DB and SQL Database solutions, ensuring high availability, fast query execution, and reliable storage
+                        </p>
+                        •	Coordinated 2 technical reviews/week, delivered monthly demos, partnering with business analysts on project goals
+
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                {/* <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
+                  <div className="flex gap-4">
+                    {/* Company Logo 
+                    <div className="flex-shrink-0">
+                      <img 
+                        src="/ajaxx.png" 
+                        alt="Ajax Fiori"
+                        className="w-16 h-16 object-contain"
+                      />
+                    </div>
+                   
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                        <h4 className="text-lg font-semibold text-gray-900">Ajax Fiori</h4>
+                        <span className="text-cyan-600 font-mono text-sm">January 2020 - October 2022</span>
+                      </div>
+                      <p className="text-gray-700 mb-2">System Engineer</p>
+                      <p className="text-gray-600">
+                        Designed and integrated secure RESTful APIs with JWT authentication and role-based access, 
+                        migrated legacy services to .NET 5 and Node.js, and developed React components and endpoints 
+                        handling 20% of KPMG Web Services requests, improving frontend-backend integration and user experience
+                      </p>
+                    </div>
+                  </div>
+                </div> */}
+
+
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
       
       {/* Skills Section */}
       <section id="skills" className="py-10 bg-[#fdfcf7]">
@@ -370,7 +429,7 @@ export default function Portfolio() {
                 Programming Languages
               </h3>
               <div className="flex flex-wrap gap-2">
-                {["C#", "Java","Python" ,"JavaScript", "TypeScript"].map((skill) => (
+                {["C#", "Java","Python" ,"Perl", "JavaScript", "TypeScript", "SQL","HTML","CSS"].map((skill) => (
                   <span
                     key={skill}
                     className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm border border-blue-200 hover:bg-blue-200 transition-colors"
@@ -383,10 +442,10 @@ export default function Portfolio() {
             <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
               <h3 className="text-lg font-semibold text-cyan-600 mb-4 flex items-center gap-2">
                 <Router size={20} />
-                Backend Dev
+                Machine Learning/ Artificial Intelligence
               </h3>
               <div className="flex flex-wrap gap-2">
-                {["React", "Node.js", "Django", "Flask", "Next.js", "Express"].map((skill) => (
+                {["Fine-Tuning", "Pytorch", "Numpy", "Pandas", "Hugging Face", "Transformers"].map((skill) => (
                   <span
                     key={skill}
                     className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm border border-green-200 hover:bg-green-200 transition-colors"
@@ -398,10 +457,10 @@ export default function Portfolio() {
             </div>
             <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
               <h3 className="text-lg font-semibold text-cyan-600 mb-4 flex items-center gap-2">
-                <LaptopMinimal size={20} /> Frameworks & Frontend Dev
+                <LaptopMinimal size={20} /> Frameworks & Frontend Tools
               </h3>
               <div className="flex flex-wrap gap-2">
-                {[".NET Core", "MVC", "HTML","CSS", "React","Ajax","Bootstrap","Node.js"].map((skill) => (
+                {[".NET Core", "MVC", "Angular11","Ajax","Bootstrap","React","LINQ", "Entity Framework", "Teamsite", "Figma", "Loveable"].map((skill) => (
                   <span
                     key={skill}
                     className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm border border-green-200 hover:bg-green-200 transition-colors"
@@ -414,10 +473,10 @@ export default function Portfolio() {
             <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
               <h3 className="text-lg font-semibold text-cyan-600 mb-4 flex items-center gap-2">
                 <Cloudy size={20} />
-                 Cloud Technologies and Database
+                 Cloud Technologies and Backend Tools
               </h3>
               <div className="flex flex-wrap gap-2">
-                {["Azure Paas", "AWS Lambda", "Azure DevOps", "Git", "SQL","MongoDB","MySQL","Hibernate"].map((skill) => (
+                {["Azure Paas", "AWS Lambda", "Azure DevOps", "MongoDB","MySQL","MS-SQL", "Notion","Git"].map((skill) => (
                   <span
                     key={skill}
                     className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm border border-purple-200 hover:bg-purple-200 transition-colors"
@@ -429,7 +488,7 @@ export default function Portfolio() {
             </div>
           </div>
           <p className="text-center text-gray-600 italic mb-2">"Change is inevitable, 
-            so I keep exploring new technologies and learning on the go." </p>
+            so I keep exploring new technologies and learn on the go." </p>
         </div>
       </section>
 
@@ -456,6 +515,8 @@ export default function Portfolio() {
               </Button>
             ))}
           </div>
+
+             
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
               <div
@@ -478,26 +539,35 @@ export default function Portfolio() {
                 </div>
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <div className="flex gap-3">
-                  <a
-                    href={project.github}
-                    className="flex items-center gap-1 text-gray-600 hover:text-cyan-600 transition-colors"
-                  >
-                    <GitHub size={16} />
-                    Code
-                  </a>
-                  <a
-                    href={project.demo}
-                    className="flex items-center gap-1 text-gray-600 hover:text-cyan-600 transition-colors"
-                  >
-                    <ExternalLink size={16} />
-                    Demo
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                 {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1 text-gray-600 hover:text-cyan-600 transition-colors"
+                          >
+                            <GitHub size={16} />
+                            Code
+                          </a>
+                        )}
+
+                   {project.demo && (
+    <a
+      href={project.demo}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-1 text-gray-600 hover:text-cyan-600 transition-colors"
+    >
+      <ExternalLink size={16} />
+      Demo
+    </a>
+  )}
+</div>
+</div>
+))} 
+</div>
+</div>
+</section> 
 
 
       {/* Certifications Section */}
@@ -563,7 +633,7 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-8">
             <Linkedin className="text-cyan-700" size={32} />
-            <h2 className="text-3xl font-bold text-gray-900">Testimonials & LeetCode Progress</h2>
+            <h2 className="text-3xl font-bold text-gray-900">Testimonials</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Testimonial 1 */}
@@ -629,7 +699,7 @@ export default function Portfolio() {
 
             
 
-            {/* LeetCode Progress */}
+            {/* LeetCode Progress
             <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
               <h3 className="text-xl font-semibold text-yellow-700 mb-6 flex items-center gap-2">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-yellow-700">
@@ -651,7 +721,8 @@ export default function Portfolio() {
                   />
                 )}
               </div>
-            </div>
+            </div> */}
+
           </div>
         </div>
       </section>
