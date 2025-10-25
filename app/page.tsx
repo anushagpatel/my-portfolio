@@ -53,7 +53,7 @@ export default function Portfolio() {
     {
       title: "ICLR Review Bias Model",
       tech: ["Python", "PyTorch", "Transformers", "Pandas", "NumPy", "CUDA", "Scikit-learn"],
-      description: "Fine-tuned a BERT model using PyTorch and Hugging Face to detect potential bias in ICLR research paper peer reviews",
+      description: "Fine-tuned RoBERTa, XGBoost, BERT models to classify English vs. non-English ICLR Publications, boosting F1-score by 85% through preprocessing, tokenization, and hyperparameter tuning (Python, PyTorch, Hugging Face)",
       github: "https://github.com/anushagpatel/BERT_Finetuning",
       gradient: "from-pink-500 to-rose-600",
       category: "Machine Learning and Artificial Intelligence",
@@ -180,9 +180,9 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative">
           {/* Left Column: Name, Biodata */}
           <div className="text-center md:text-left">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-700">Anusha G Patel</h1>
+            <h1 className="text-4xl sm:text-4xl font-bold mb-4 text-gray-700">Anusha G Patel</h1>
             <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
-              <p className="pl-4 text-xl text-gray-600 font-mono">MS in Computer Systems Engineering</p>
+              <p className="text-xl text-gray-600 font-mono">MS in Computer Systems Engineering</p>
             </div>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed border-l-4 border-yellow-500 pl-4">
               I’m a Full-Stack Developer and Master’s student at 
@@ -262,7 +262,7 @@ export default function Portfolio() {
 
       {/* Experience Section */}
        <section id="experience" className="py-5 bg-[#fdfcf7]">
-      <div className="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-8">
         <div className="flex items-center gap-2 mb-4">
           <BriefcaseBusiness className="text-cyan-700" size={32} />
           <h2 className="text-3xl font-bold text-gray-900">Work Experience</h2>
@@ -289,7 +289,7 @@ export default function Portfolio() {
                       <h4 className="text-lg font-semibold text-gray-900">Northeastern University</h4>
                       <span className="text-cyan-600 font-mono text-sm">June 2025 - Present</span>
                     </div>
-                    <p className="text-gray-700 mb-2">Research Assistant</p>
+                    <p className="font-bold text-gray-700 mb-2">Research Assistant</p>
                     <p className="text-gray-600">
                       • Fine-tuned RoBERTa model to classify English vs. non-English ICLR 
                       Publications, boosting F1-score by 85% through preprocessing, tokenization, 
@@ -323,7 +323,7 @@ export default function Portfolio() {
                         <h4 className="text-lg font-semibold text-gray-900">IBM</h4>
                         <span className="text-cyan-600 font-mono text-sm">October 2022 - January 2024</span>
                       </div>
-                      <p className="text-gray-700 mb-2">Application Developer</p>
+                      <p className="font-bold text-gray-700 mb-2">Application Developer</p>
                       <p className="text-gray-600">
                         • Built responsive dashboards using .NET, RESTful APIs, and React on the frontend for Chubb’s legacy policy, 
                         admin, and claims platforms. 
@@ -363,7 +363,7 @@ export default function Portfolio() {
                         <h4 className="text-lg font-semibold text-gray-900">Tata Consultancy Services</h4>
                         <span className="text-cyan-600 font-mono text-sm">January 2020 - October 2022</span>
                       </div>
-                      <p className="text-gray-700 mb-2">System Engineer</p>
+                      <p className="font-bold text-gray-700 mb-2">System Engineer</p>
                       <p className="text-gray-600">
                         •	Revamped applications from ASP.NET MVC to .NET 5 for KPMG Web Services, offloading 20% of incoming customer requests
                         <p>
@@ -417,7 +417,7 @@ export default function Portfolio() {
       
       {/* Skills Section */}
       <section id="skills" className="py-10 bg-[#fdfcf7]">
-        <div className="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-5">
             <Terminal className="text-cyan-700" size={32} />
             <h2 className="text-3xl font-bold text-gray-900">Tech Stack</h2>
@@ -494,13 +494,13 @@ export default function Portfolio() {
 
       {/* Projects Section */}
       <section id="projects" className="py-10 bg-[#fdfcf7]">
-        <div className="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-1 mb-4">
             <Code className="text-cyan-700" size={32} />
             <h2 className="text-3xl font-bold text-gray-900">Personal Projects</h2>
           </div>
           {/* Project Filter Buttons */}
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className="flex flex-wrap gap-2 mb-6">
             {projectCategories.map((category) => (
               <Button
                 key={category}
@@ -572,7 +572,7 @@ export default function Portfolio() {
 
       {/* Certifications Section */}
       <section id="certifications" className="py-10 bg-[#fdfcf7]">
-  <div className="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div className="flex items-center gap-2 mb-6">
       <Award className="text-cyan-700" size={32} />
       <h2 className="text-3xl font-bold text-gray-900">Certifications</h2>
@@ -630,15 +630,15 @@ export default function Portfolio() {
 
       {/* Testimonials & LeetCode Progress Section */}
       <section id="testimonials" className="py-8 bg-[#fdfcf7]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-8">
             <Linkedin className="text-cyan-700" size={32} />
             <h2 className="text-3xl font-bold text-gray-900">Testimonials</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
             {/* Testimonial 1 */}
             <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
-              <p className="text-gray-700 mb-4 italic">
+              <p className="text-gray-700 mb-3 italic">
                 "I had the opportunity to work with Anusha on one of IBM's Projects. Since the first day, she has shown
                 herself to be an optimistic professional, fast learner and open to the cultural challenges posed by
                 different teams. Anusha's ability to command a room and her technical skills generate great value for
@@ -667,7 +667,7 @@ export default function Portfolio() {
 
             {/* Testimonial 2 */}
             <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
-              <p className="text-gray-700 mb-4 italic">
+              <p className="text-gray-700 mb-3 italic">
                 "Anusha is a talented full-stack developer with an exemplary work ethic. She is a valued member of our
                 team. Anusha seamlessly integrates third-party APIs into our products, consistently delivering quick and
                 positive results in terms of user interaction and retention. She manages the full software development
@@ -728,7 +728,7 @@ export default function Portfolio() {
       </section>
 
       <section id="experience" className="py-8 bg-[#fdfcf7]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-8">
             <HandHelping className="text-cyan-700" size={32} />
             <h2 className="text-3xl font-bold text-gray-900">Volunteering Experience</h2>
@@ -747,6 +747,20 @@ export default function Portfolio() {
                     I organized a medicines(unused) collection drive within my locality and encouraged my
                      peers & neighbours to donate unused/unexpired medicines available at their homes
                      and submit the medicines to your nearest Meds For More (MFM) collection centre.
+                  </p>
+                </div>
+                </div>
+                </div>
+                 <div> 
+              <div className="space-y-4">
+              <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-cyan-300 transition-colors">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                    <h4 className="text-lg font-semibold text-gray-900">Project Stree</h4>
+                    <span className="text-cyan-600 font-mono text-sm">March 2018 - July 2018 </span>
+                  </div>
+                  <p className="text-gray-700 mb-2">Student Ambassador</p>
+                  <p className="text-gray-600">
+                    Helped organize vocational training workshops and community outreach events.
                   </p>
                 </div>
                 </div>
